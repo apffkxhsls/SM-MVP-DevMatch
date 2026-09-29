@@ -34,7 +34,7 @@ body {
 
 .project-card strong {
     display: block;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     font-size: 18px;
     color: #4f46e5;
 }
@@ -66,4 +66,10 @@ body {
     gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.project-card .match-summary {
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 1.6;
 }
