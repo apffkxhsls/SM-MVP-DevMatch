@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: "맑은 고딕", sans-serif;
+    color: #1f2937;
+    background-color: #f5f7fa;
+}
+
+.profile-page {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: 28px;
+}
+
+.profile-page > p {
+    margin: 0 0 32px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 기존 박스 디자인 유지 */
+.profile-form > fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+}
+
+/* 그룹 제목 기본 글꼴 */
+legend {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* 그룹 제목을 박스 안쪽으로 배치 */
+.profile-form > fieldset > legend,
+.skill-options > legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.profile-form > fieldset > legend + *,
+.skill-options > legend + * {
+    clear: both;
+}
+
+/* 개별 입력 항목 */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field + .form-field,
+.skill-options {
+    margin-top: 24px;
+}
+
+.form-field > label,
+.form-field > p:first-child {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+input:not([type="checkbox"]),
+select,
+textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    color: #1f2937;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #6b7280;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+.form-field > p:not(:first-child) {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* 기술 스택 선택 */
+.skill-options {
+    min-width: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-options legend {
+    font-size: 14px;
+}
+
+.skill-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.skill-options input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #4f46e5;
+}
+
+/* 저장 버튼 */
+.profile-form > button {
+    width: 100%;
+    padding: 14px 20px;
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #4f46e5;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.profile-form > button:disabled {
+    color: #6b7280;
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .profile-form {
+        gap: 20px;
+    }
+
+    .profile-form > fieldset {
+        padding: 20px 16px;
+    }
+
+    .skill-options {
+        padding: 12px;
+        gap: 8px;
+    }
+}
