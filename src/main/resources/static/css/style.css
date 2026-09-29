@@ -39,11 +39,14 @@ body {
     color: #4f46e5;
 }
 
-.project-card button {
+.project-card .detail-link {
+    display: block;
     width: 100%;
     padding: 12px 16px;
     font: inherit;
     font-weight: 600;
+    text-align: center;
+    text-decoration: none;
     color: #ffffff;
     background-color: #4f46e5;
     border: none;
@@ -51,11 +54,11 @@ body {
     cursor: pointer;
 }
 
-.project-card button:hover {
+.project-card .detail-link:hover {
     background-color: #4338ca;
 }
 
-.project-card button:focus-visible {
+.project-card .detail-link:focus-visible {
     outline: 3px solid #a5b4fc;
     outline-offset: 3px;
 }
