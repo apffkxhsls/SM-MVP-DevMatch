@@ -47,4 +47,9 @@ public class MemberService {
 
         return savedMember.getId();
     }
+
+    @Transactional(readOnly = true)
+    public boolean isEmailRegistered(String email) {
+        return memberRepository.existsByEmail(email);
+    }
 }
