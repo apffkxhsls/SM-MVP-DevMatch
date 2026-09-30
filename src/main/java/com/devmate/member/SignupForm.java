@@ -4,6 +4,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.Locale;
+
 public class SignupForm {
 
     @NotBlank(message = "이메일을 입력해주세요.")
@@ -40,6 +42,8 @@ public class SignupForm {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.strip();
+        this.name = name == null
+                ? null
+                : name.strip().toLowerCase(java.util.Locale.ROOT);
     }
 }
