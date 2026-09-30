@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet"
+          href="../../static/css/style.css"
+          th:href="@{/css/style.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 찾기 | DevMatch</title>
+</head>
+
+<body>
+<header class="site-header">
+    <nav class="nav-container" aria-label="주 메뉴">
+        <a class="logo" href="/projects" th:href="@{/projects}">DevMatch</a>
+        <div class="nav-menu">
+            <a class="nav-link active"
+               href="/projects"
+               th:href="@{/projects}"
+               aria-current="page">팀 찾기</a>
+            <a class="nav-link" href="/projects/new" th:href="@{/projects/new}">모집글 작성</a>
+            <a class="nav-link" href="/my/applications" th:href="@{/my/applications}">내 활동</a>
+            <a class="nav-link" href="/profile" th:href="@{/profile}">내 프로필</a>
+        </div>
+    </nav>
+</header>
+
+<main class="page-content">
+    <h1 class="page-title">나에게 맞는 프로젝트</h1>
+
+    <div class="project-list">
+        <div class="project-card">
+            <h2>공모전 팀원 모집</h2>
+            <p>백엔드 · Spring Boot · 비대면</p>
+            <strong>적합도 90점</strong>
+
+            <p class="match-summary">
+                우대 기술 3/4개 충족 · 공통 시간 주 6시간 · 목표 일치
+            </p>
+
+            <a href="/projects/1"
+               th:href="@{/projects/1}"
+               class="detail-link"
+               aria-label="공모전 팀원 모집 상세 보기">
+                상세 보기
+            </a>
+        </div>
+
+        <div class="project-card">
+            <h2>토이프로젝트 팀원 모집</h2>
+            <p>Android · Kotlin · 대면</p>
+            <strong>적합도 20점</strong>
+
+            <p class="match-summary">
+                우대 기술 1/4개 충족 · 공통 시간 주 2시간 · 목표 불일치
+            </p>
+
+            <a href="/projects/2"
+               th:href="@{/projects/2}"
+               class="detail-link"
+               aria-label="토이프로젝트 팀원 모집 상세 보기">
+                상세 보기
+            </a>
+        </div>
+
+        <div class="project-card">
+            <h2>해커톤 팀원 모집</h2>
+            <p>AI · LLM · 대면</p>
+            <strong>적합도 50점</strong>
+
+            <p class="match-summary">
+                우대 기술 2/4개 충족 · 공통 시간 주 4시간 · 목표 일치
+            </p>
+
+            <a href="/projects/3"
+               th:href="@{/projects/3}"
+               class="detail-link"
+               aria-label="해커톤 팀원 모집 상세 보기">
+                상세 보기
+            </a>
+        </div>
+
+    </div>
+</main>
+</body>
+</html>
