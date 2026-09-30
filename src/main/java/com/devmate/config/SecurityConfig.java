@@ -46,4 +46,10 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+    // 회원가입 시 비밀번호를 해시 처리하는 도구
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
