@@ -1,5 +1,6 @@
 package com.devmate.member;
 
+import com.devmate.member.repository.MemberRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

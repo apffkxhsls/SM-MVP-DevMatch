@@ -1,5 +1,6 @@
-package com.devmate.member;
+package com.devmate.member.repository;
 
+import com.devmate.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
