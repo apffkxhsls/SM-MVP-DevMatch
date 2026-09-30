@@ -16,4 +16,13 @@ public class ProjectController {
     public String list() {
         return "project/list";
     }
+
+    /**
+     * 모집글 작성 화면을 반환한다.
+     * 실제 등록 및 DB 저장은 아직 연결하지 않는다.
+     */
+    @GetMapping("/projects/new")
+    public String createForm() {
+        return "project/form";
+    }
 }

@@ -1,0 +1,326 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: "맑은 고딕", sans-serif;
+    color: #1f2937;
+    background-color: #f5f7fa;
+}
+
+.project-form-page {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.project-form-page h1 {
+    margin: 0 0 12px;
+    font-size: 28px;
+    line-height: 1.4;
+}
+
+.project-form-page > p {
+    margin: 0 0 32px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 입력 그룹 */
+.project-form > fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+}
+
+/* 제목을 테두리 안쪽에 배치 */
+.project-form legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.project-form legend + * {
+    clear: both;
+}
+
+/* 개별 입력 항목 */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-field + .form-field,
+.field-hint + .form-field {
+    margin-top: 24px;
+}
+
+.form-field > label,
+.form-field > p:first-child {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+input:not([type="checkbox"]),
+select,
+textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    color: #1f2937;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #6b7280;
+}
+
+textarea {
+    min-height: 160px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+/* 입력 안내 */
+.field-hint {
+    margin: 12px 0 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.form-field > .field-hint {
+    margin: 0;
+}
+
+/* 필수·우대 기술 */
+.skill-options {
+    min-width: 0;
+    margin: 24px 0 0;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-options legend {
+    font-size: 14px;
+}
+
+.skill-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.skill-options input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #4f46e5;
+}
+
+/* 추후 JavaScript에서 선택 상태에 따라 적용 */
+.skill-options label:has(input:checked) {
+    color: #4338ca;
+    background-color: #eef2ff;
+}
+
+.skill-options label:has(input:disabled) {
+    color: #6b7280;
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+}
+
+input:disabled,
+select:disabled {
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+}
+
+/* 지역 입력 영역 숨김 처리 지원 */
+.form-field[hidden] {
+    display: none;
+}
+
+/* 등록 버튼 */
+.project-form > button {
+    width: 100%;
+    padding: 14px 20px;
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #4f46e5;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.project-form > button:disabled {
+    color: #6b7280;
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    .project-form-page h1 {
+        font-size: 24px;
+    }
+
+    .project-form {
+        gap: 20px;
+    }
+
+    .project-form > fieldset {
+        padding: 20px 16px;
+    }
+
+    .skill-options {
+        padding: 12px;
+        gap: 8px;
+    }
+}
+
+/* 시간대 선택표: 표 영역 안에서만 스크롤 */
+.time-table-wrapper {
+    max-height: 420px;
+    overflow: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.time-table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.time-table th,
+.time-table td {
+    padding: 4px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.time-table th {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    background-color: #f9fafb;
+}
+
+.time-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px 4px;
+}
+
+.time-table th:first-child {
+    width: 64px;
+}
+
+.time-slot {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+/* 체크박스는 키보드로도 선택할 수 있게 유지 */
+.time-slot input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.time-slot-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.time-slot:hover .time-slot-mark {
+    border-color: #4f46e5;
+}
+
+.time-slot input:checked + .time-slot-mark {
+    color: #ffffff;
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.time-slot input:checked + .time-slot-mark::after {
+    content: "✓";
+}
+
+.time-slot input:focus-visible + .time-slot-mark {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 1px;
+}
+
+.time-table-wrapper:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+#selectedTimeCount {
+    color: #4f46e5;
+    font-weight: 600;
+}
