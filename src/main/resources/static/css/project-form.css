@@ -227,3 +227,100 @@ select:disabled {
         gap: 8px;
     }
 }
+
+/* 시간대 선택표: 표 영역 안에서만 스크롤 */
+.time-table-wrapper {
+    max-height: 420px;
+    overflow: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.time-table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.time-table th,
+.time-table td {
+    padding: 4px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.time-table th {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    background-color: #f9fafb;
+}
+
+.time-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px 4px;
+}
+
+.time-table th:first-child {
+    width: 64px;
+}
+
+.time-slot {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+/* 체크박스는 키보드로도 선택할 수 있게 유지 */
+.time-slot input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.time-slot-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.time-slot:hover .time-slot-mark {
+    border-color: #4f46e5;
+}
+
+.time-slot input:checked + .time-slot-mark {
+    color: #ffffff;
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.time-slot input:checked + .time-slot-mark::after {
+    content: "✓";
+}
+
+.time-slot input:focus-visible + .time-slot-mark {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 1px;
+}
+
+.time-table-wrapper:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+#selectedTimeCount {
+    color: #4f46e5;
+    font-weight: 600;
+}

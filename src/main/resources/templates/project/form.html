@@ -181,9 +181,37 @@
             </p>
 
             <div class="form-field">
-                <p>팀 활동 가능 시간대</p>
-                <p class="field-hint">
-                    시간대 선택표는 프로필 UI 작업 병합 후 연결할 예정입니다.
+                <p id="availabilityTitle">팀 활동 가능 시간대</p>
+                <p id="availabilityHelp" class="field-hint">
+                    한국 시간 기준으로 팀이 함께 활동할 수 있는 시간을 선택하세요.
+                    각 칸은 1시간입니다.
+                </p>
+
+                <div class="time-table-wrapper"
+                     role="region"
+                     aria-labelledby="availabilityTitle"
+                     tabindex="0">
+                    <table class="time-table"
+                           aria-labelledby="availabilityTitle"
+                           aria-describedby="availabilityHelp">
+                        <thead>
+                        <tr>
+                            <th scope="col">시간</th>
+                            <th scope="col">월</th>
+                            <th scope="col">화</th>
+                            <th scope="col">수</th>
+                            <th scope="col">목</th>
+                            <th scope="col">금</th>
+                            <th scope="col">토</th>
+                            <th scope="col">일</th>
+                        </tr>
+                        </thead>
+                        <tbody id="timeTableBody"></tbody>
+                    </table>
+                </div>
+
+                <p id="selectedTimeCount" aria-live="polite">
+                    선택한 시간: 주 0시간
                 </p>
             </div>
         </fieldset>
@@ -249,6 +277,9 @@
         </button>
     </form>
 </main>
+<script src="../../static/js/time-selector.js"
+        th:src="@{/js/time-selector.js}"></script>
+
 <script src="../../static/js/project-form.js"
         th:src="@{/js/project-form.js}"></script>
 </body>
