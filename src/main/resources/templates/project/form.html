@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet"
+          href="../../static/css/project-form.css"
+          th:href="@{/css/project-form.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모집글 작성 | DevMate</title>
+</head>
+<body>
+<main class="project-form-page">
+    <h1>모집글 작성</h1>
+    <p>프로젝트에 함께할 팀원 1명을 모집합니다.</p>
+
+    <form class="project-form">
+        <fieldset>
+            <legend>프로젝트 소개</legend>
+
+            <div class="form-field">
+                <label for="title">프로젝트 제목</label>
+                <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="예: 공모전 웹서비스 백엔드 팀원 모집"
+                        required
+                >
+            </div>
+
+            <div class="form-field">
+                <label for="description">상세 설명</label>
+                <textarea
+                        id="description"
+                        name="description"
+                        rows="6"
+                        placeholder="프로젝트 소개, 진행 기간, 담당 업무 등을 작성해주세요."
+                        required
+                ></textarea>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>모집 역할 및 기술</legend>
+
+            <div class="form-field">
+                <label for="role">모집 역할</label>
+                <select id="role" name="role" required>
+                    <option value="">역할을 선택하세요</option>
+                    <option value="FRONTEND">프론트엔드</option>
+                    <option value="BACKEND">백엔드</option>
+                    <option value="ANDROID">Android</option>
+                    <option value="IOS">iOS</option>
+                    <option value="AI">AI</option>
+                </select>
+            </div>
+
+            <fieldset class="skill-options">
+                <legend>필수 기술 — 여러 개 선택 가능</legend>
+
+                <label>
+                    <input type="checkbox" name="requiredSkills" value="JAVA">
+                    Java
+                </label>
+                <label>
+                    <input type="checkbox" name="requiredSkills" value="KOTLIN">
+                    Kotlin
+                </label>
+                <label>
+                    <input type="checkbox" name="requiredSkills" value="PYTHON">
+                    Python
+                </label>
+                <label>
+                    <input type="checkbox" name="requiredSkills" value="JAVASCRIPT">
+                    JavaScript
+                </label>
+                <label>
+                    <input type="checkbox" name="requiredSkills" value="SPRING_BOOT">
+                    Spring Boot
+                </label>
+                <label>
+                    <input type="checkbox" name="requiredSkills" value="REACT">
+                    React
+                </label>
+            </fieldset>
+
+            <fieldset class="skill-options">
+                <legend>우대 기술 — 여러 개 선택 가능</legend>
+
+                <label>
+                    <input type="checkbox" name="preferredSkills" value="JAVA">
+                    Java
+                </label>
+                <label>
+                    <input type="checkbox" name="preferredSkills" value="KOTLIN">
+                    Kotlin
+                </label>
+                <label>
+                    <input type="checkbox" name="preferredSkills" value="PYTHON">
+                    Python
+                </label>
+                <label>
+                    <input type="checkbox" name="preferredSkills" value="JAVASCRIPT">
+                    JavaScript
+                </label>
+                <label>
+                    <input type="checkbox" name="preferredSkills" value="SPRING_BOOT">
+                    Spring Boot
+                </label>
+                <label>
+                    <input type="checkbox" name="preferredSkills" value="REACT">
+                    React
+                </label>
+            </fieldset>
+
+            <p class="field-hint">
+                필수 기술은 지원 조건이며, 우대 기술은 적합도 점수에 반영됩니다.
+                동일 기술은 필수·우대 중 한쪽에만 선택할 수 있습니다.
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>활동 시간</legend>
+
+            <div class="form-field">
+                <label for="requiredWeeklyHours">요구 주당 시간</label>
+                <input
+                        type="number"
+                        id="requiredWeeklyHours"
+                        name="requiredWeeklyHours"
+                        min="1"
+                        max="168"
+                        step="1"
+                        placeholder="예: 8"
+                        required
+                        aria-describedby="weeklyHoursHelp"
+                >
+                <p id="weeklyHoursHelp" class="field-hint">
+                    개인 작업과 공동 활동을 포함하여 필요한 주당 참여 시간입니다.
+                </p>
+            </div>
+
+            <div class="form-field">
+                <label for="minimumCommonHours">최소 공통 활동 시간</label>
+                <input
+                        type="number"
+                        id="minimumCommonHours"
+                        name="minimumCommonHours"
+                        min="1"
+                        max="168"
+                        step="1"
+                        placeholder="예: 2"
+                        required
+                        aria-describedby="minimumHoursHelp"
+                >
+                <p id="minimumHoursHelp" class="field-hint">
+                    지원자가 팀과 함께 활동할 수 있어야 하는 최소 시간입니다.
+                </p>
+            </div>
+
+            <div class="form-field">
+                <label for="desiredCommonHours">희망 공통 활동 시간</label>
+                <input
+                        type="number"
+                        id="desiredCommonHours"
+                        name="desiredCommonHours"
+                        min="1"
+                        max="168"
+                        step="1"
+                        placeholder="예: 4"
+                        required
+                        aria-describedby="desiredHoursHelp"
+                >
+                <p id="desiredHoursHelp" class="field-hint">
+                    공통 시간 적합도 점수가 만점이 되는 기준입니다.
+                </p>
+            </div>
+
+            <p class="field-hint">
+                최소 공통 시간 ≤ 희망 공통 시간 ≤ 요구 주당 시간으로 입력해주세요.
+            </p>
+
+            <div class="form-field">
+                <p>팀 활동 가능 시간대</p>
+                <p class="field-hint">
+                    시간대 선택표는 프로필 UI 작업 병합 후 연결할 예정입니다.
+                </p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>목표 및 협업 방식</legend>
+
+            <div class="form-field">
+                <label for="goal">프로젝트 목표</label>
+                <select id="goal" name="goal" required>
+                    <option value="">목표를 선택하세요</option>
+                    <option value="CONTEST">대회 출전</option>
+                    <option value="PORTFOLIO">포트폴리오</option>
+                    <option value="SERVICE">실제 서비스 운영</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="meetingType">협업 방식</label>
+                <select id="meetingType" name="meetingType" required>
+                    <option value="">방식을 선택하세요</option>
+                    <option value="ONLINE">비대면</option>
+                    <option value="OFFLINE">대면</option>
+                </select>
+            </div>
+
+            <div class="form-field" id="regionField">
+                <label for="region">진행 지역 — 대면 선택 시 필수</label>
+                <input
+                        type="text"
+                        id="region"
+                        name="region"
+                        placeholder="예: 서울특별시 용산구"
+                        aria-describedby="regionHelp"
+                >
+                <p id="regionHelp" class="field-hint">
+                    현재는 임시 텍스트 입력 방식입니다.
+                </p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>모집 마감</legend>
+
+            <div class="form-field">
+                <label for="deadline">모집 마감 일시</label>
+                <input
+                        type="datetime-local"
+                        id="deadline"
+                        name="deadline"
+                        required
+                        aria-describedby="deadlineHelp"
+                >
+                <p id="deadlineHelp" class="field-hint">
+                    한국 시간 기준입니다. 마감 전이라도 팀원 1명을 수락하면
+                    모집이 자동 종료됩니다.
+                </p>
+            </div>
+        </fieldset>
+
+        <button type="button" disabled>
+            모집글 등록 — 준비 중
+        </button>
+    </form>
+</main>
+<script src="../../static/js/project-form.js"
+        th:src="@{/js/project-form.js}"></script>
+</body>
+</html>
