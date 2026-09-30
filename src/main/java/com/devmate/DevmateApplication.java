@@ -1,13 +1,13 @@
-package com.devmatch;
+package com.devmate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DevmatchApplication {
+public class DevmateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DevmatchApplication.class, args);
+		SpringApplication.run(DevmateApplication.class, args);
 	}
 
 }

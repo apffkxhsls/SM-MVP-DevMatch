@@ -1,4 +1,4 @@
-package com.devmatch.project;
+package com.devmate.project;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

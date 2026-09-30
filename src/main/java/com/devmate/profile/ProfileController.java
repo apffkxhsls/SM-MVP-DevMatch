@@ -1,4 +1,4 @@
-package com.devmatch.profile;
+package com.devmate.profile;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
