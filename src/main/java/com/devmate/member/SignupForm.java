@@ -26,7 +26,9 @@ public class SignupForm {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.strip();
+        this.email = email == null
+                ? null
+                : email.strip().toLowerCase(Locale.ROOT);
     }
 
     public String getPassword() {
@@ -42,8 +44,6 @@ public class SignupForm {
     }
 
     public void setName(String name) {
-        this.name = name == null
-                ? null
-                : name.strip().toLowerCase(java.util.Locale.ROOT);
+        this.name = name == null ? null : name.strip();
     }
 }
