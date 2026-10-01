@@ -26,6 +26,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	// Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+	testRuntimeOnly 'com.h2database:h2'
+
+	// Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
