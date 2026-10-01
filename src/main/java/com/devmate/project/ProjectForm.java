@@ -33,7 +33,7 @@ public class ProjectForm {
 
     @NotNull(message = "요구 주당 시간을 입력해주세요.")
     @Min(value = 1, message = "요구 주당 시간은 1시간 이상이어야 합니다.")
-    @Max(value = 100, message = "요구 주당 시간은 100시간 이하여야 합니다.")
+    @Max(value = 168, message = "요구 주당 시간은 168시간 이하여야 합니다.")
     private Integer requiredWeeklyHours;
 
     @NotNull(message = "최소 공통 시간을 입력해주세요.")
@@ -66,7 +66,7 @@ public class ProjectForm {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime deadline;
 
-    @AssertTrue(message = "동일한 기술을 필수와 우대에 중복 선태할 수 없습니다.")
+    @AssertTrue(message = "동일한 기술을 필수와 우대에 중복 선택할 수 없습니다.")
     public boolean isSkillsDisjoint() {
         if (requiredSkills == null || preferredSkills == null) {
             return true;
