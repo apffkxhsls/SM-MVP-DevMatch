@@ -119,7 +119,7 @@ public class ProjectForm {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.strip();
     }
 
     public String getDescription() {
@@ -127,7 +127,7 @@ public class ProjectForm {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description == null ? null : description.strip();
     }
 
     public Role getRole() {
