@@ -1,28 +1,134 @@
 package com.devmate.project;
 
+import com.devmate.member.security.MemberPrincipal;
+import com.devmate.project.service.ProjectService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ProjectController {
 
+    private final ProjectService projectService;
+
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
     /**
-     * 팀 찾기 화면을 반환한다.
-     * 현재는 하드코딩된 모집글 카드 목록을 표시한다.
-     *
-     * @return 모집글 목록 템플릿 경로
+     * 모집글 목록을 최신순으로 조회한다.
      */
     @GetMapping("/projects")
-    public String list() {
+    public String list(
+            @RequestParam(defaultValue = "0") int page,
+            Model model
+    ) {
+        validatePage(page);
+
+        model.addAttribute(
+                "projectPage",
+                projectService.getProjects(page)
+        );
+
         return "project/list";
     }
 
     /**
-     * 모집글 작성 화면을 반환한다.
-     * 실제 등록 및 DB 저장은 아직 연결하지 않는다.
+     * 빈 모집글 입력 폼을 전달한다.
      */
     @GetMapping("/projects/new")
-    public String createForm() {
+    public String createForm(Model model) {
+        model.addAttribute("projectForm", new ProjectForm());
         return "project/form";
+    }
+
+    /**
+     * 로그인한 회원을 작성자로 모집글을 등록한다.
+     */
+    @PostMapping("/projects")
+    public String create(
+            @AuthenticationPrincipal MemberPrincipal principal,
+            @Valid @ModelAttribute("projectForm") ProjectForm form,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "project/form";
+        }
+
+        Long projectId = projectService.create(
+                principal.getMemberId(),
+                form
+        );
+
+        redirectAttributes.addFlashAttribute(
+                "successMessage",
+                "모집글이 등록되었습니다."
+        );
+
+        return "redirect:/projects/" + projectId;
+    }
+
+    /** 모집글 상세 정보를 조회한다. */
+    @GetMapping("/projects/{projectId}")
+    public String detail(
+            @PathVariable Long projectId,
+            Model model
+    ) {
+        if (projectId <= 0) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "모집글 ID는 양수여야 합니다."
+                    );
+        }
+
+        model.addAttribute(
+                "project",
+                projectService.getProject(projectId)
+        );
+
+        return "project/detail";
+    }
+
+    /** 로그인한 회원이 작성한 모집글만 조회한다. */
+    @GetMapping("/my/projects")
+    public String myProjects(
+            @AuthenticationPrincipal MemberPrincipal principal,
+            @RequestParam(defaultValue = "0") int page,
+            Model model
+    ) {
+        validatePage(page);
+
+        model.addAttribute(
+                "projectPage",
+                projectService.getMyProjects(principal.getMemberId(), page)
+        );
+
+        return "project/my-list";
+    }
+
+    /** 이 컨트롤러에서 조회 대상이 없으면 404로 처리한다. */
+    @ExceptionHandler(EntityNotFoundException.class)
+    public void handleNotFound(
+            EntityNotFoundException exception,
+            jakarta.servlet.http.HttpServletResponse response
+    ) throws java.io.IOException {
+        response.sendError(HttpStatus.NOT_FOUND.value());
+    }
+
+    private void validatePage(int page) {
+        if (page < 0) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "페이지 번호는 0 이상이어야 합니다."
+            );
+        }
     }
 }
