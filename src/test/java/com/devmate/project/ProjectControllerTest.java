@@ -303,6 +303,74 @@ class ProjectControllerTest {
         verify(projectService).getMyProjects(1L, 0);
     }
 
+    @Test
+    @DisplayName("프로필이 없으면 빈 목록과 프로필 작성 안내를 전달한다")
+    void profileRequired() throws Exception {
+        Page<RecommendationCard> page = Page.empty();
+
+        when(recommendationService.getRecommendations(
+                1L, MatchStatus.PASS, 0
+        )).thenReturn(
+                new RecommendationResult(page, MatchStatus.PASS, true)
+        );
+
+        mockMvc.perform(get("/projects"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("project/list"))
+                .andExpect(model().attribute("projectPage", page))
+                .andExpect(model().attribute("profileRequired", true));
+    }
+
+    @Test
+    @DisplayName("UNKNOWN 탭을 조회할 수 있다")
+    void unknownStatus() throws Exception {
+        Page<RecommendationCard> page = Page.empty();
+
+        when(recommendationService.getRecommendations(
+                1L, MatchStatus.UNKNOWN, 0
+        )).thenReturn(
+                new RecommendationResult(page, MatchStatus.UNKNOWN, false)
+        );
+
+        mockMvc.perform(get("/projects")
+                        .param("status", "UNKNOWN"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("selectedStatus", MatchStatus.UNKNOWN))
+                .andExpect(model().attribute("projectPage", page));
+
+        verify(recommendationService)
+                .getRecommendations(1L, MatchStatus.UNKNOWN, 0);
+    }
+
+    @Test
+    @DisplayName("정의되지 않은 추천 상태는 400으로 처리한다")
+    void invalidRecommendationStatus() throws Exception {
+        mockMvc.perform(get("/projects")
+                        .param("status", "HELLO"))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(projectService, recommendationService);
+    }
+
+    @Test
+    @DisplayName("다른 회원 ID를 보내도 로그인한 회원 기준으로 추천한다")
+    void recommendationUsesAuthenticatedMember() throws Exception {
+        when(recommendationService.getRecommendations(
+                1L, MatchStatus.PASS, 0
+        )).thenReturn(
+                new RecommendationResult(Page.empty(), MatchStatus.PASS, false)
+        );
+
+        mockMvc.perform(get("/projects")
+                        .param("memberId", "999"))
+                .andExpect(status().isOk());
+
+        verify(recommendationService)
+                .getRecommendations(1L, MatchStatus.PASS, 0);
+        verifyNoMoreInteractions(recommendationService);
+        verifyNoInteractions(projectService);
+    }
+
     private MockHttpServletRequestBuilder validRequest() {
         return post("/projects")
                 .param("title", "백엔드 팀원 모집")
