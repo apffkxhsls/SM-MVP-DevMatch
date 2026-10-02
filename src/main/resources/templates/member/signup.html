@@ -25,7 +25,6 @@
                     id="email"
                     th:field="*{email}"
                     placeholder="example@email.com"
-                    required
                 >
                 <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="field-error"></p>
             </div>
@@ -37,7 +36,6 @@
                     id="password"
                     name="password"
                     placeholder="영문, 숫자, 특수문자 포함 8자~20자"
-                    required
                 >
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="field-error"></p>
             </div>
@@ -49,7 +47,6 @@
                     id="passwordConfirm"
                     name="passwordConfirm"
                     placeholder="비밀번호를 다시 입력하세요"
-                    required
                     aria-describedby="passwordConfirmMessage"
                 >
                 <p id="passwordConfirmMessage" aria-live="polite"></p>
@@ -66,7 +63,6 @@
                     id="name"
                     th:field="*{name}"
                     placeholder="50자 이하"
-                    required
                     aria-describedby="nameHelp"
                 >
                 <p id="nameHelp">다른 사용자에게 표시되는 이름입니다.</p>
