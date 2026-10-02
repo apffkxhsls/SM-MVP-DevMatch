@@ -27,6 +27,7 @@
                     placeholder="example@email.com"
                     required
                 >
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="field-error"></p>
             </div>
 
             <div class="form-field">
@@ -39,6 +40,7 @@
                     required
                     aria-describedby="passwordHelp"
                 >
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="field-error"></p>
             </div>
 
             <div class="form-field">
@@ -69,6 +71,7 @@
                     aria-describedby="nameHelp"
                 >
                 <p id="nameHelp">다른 사용자에게 표시되는 이름입니다.</p>
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="field-error"></p>
             </div>
         </fieldset>
 
