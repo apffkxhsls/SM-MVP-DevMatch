@@ -26,7 +26,14 @@ function validateEmail(input) {
     return true;
 }
 
-function validatePassword(input) {
+function validatePasswordLogin(input) {
+    const value = input.value;
+    if (!value) return showError(input, '비밀번호를 입력해주세요.'), false;
+    clearError(input);
+    return true;
+}
+
+function validatePasswordSignup(input) {
     const value = input.value;
     if (!value) return showError(input, '비밀번호를 입력해주세요.'), false;
     if (value.length < 8 || value.length > 20) return showError(input, '비밀번호는 8~20자여야 합니다.'), false;
@@ -60,12 +67,12 @@ if (loginForm) {
     const passwordInput = loginForm.querySelector('#password');
 
     emailInput.addEventListener('blur', () => validateEmail(emailInput));
-    passwordInput.addEventListener('blur', () => validatePassword(passwordInput));
+    passwordInput.addEventListener('blur', () => validatePasswordLogin(passwordInput));
 
     loginForm.addEventListener('submit', (e) => {
         const ok = [
             validateEmail(emailInput),
-            validatePassword(passwordInput),
+            validatePasswordLogin(passwordInput),
         ].every(Boolean);
         if (!ok) e.preventDefault();
     });
@@ -80,14 +87,14 @@ if (signupForm) {
     const nicknameInput = signupForm.querySelector('#name');
 
     emailInput.addEventListener('blur', () => validateEmail(emailInput));
-    passwordInput.addEventListener('blur', () => validatePassword(passwordInput));
+    passwordInput.addEventListener('blur', () => validatePasswordSignup(passwordInput));
     confirmInput.addEventListener('blur', () => validatePasswordConfirm(passwordInput, confirmInput));
     nicknameInput.addEventListener('blur', () => validateNickname(nicknameInput));
 
     signupForm.addEventListener('submit', (e) => {
         const ok = [
             validateEmail(emailInput),
-            validatePassword(passwordInput),
+            validatePasswordSignup(passwordInput),
             validatePasswordConfirm(passwordInput, confirmInput),
             validateNickname(nicknameInput),
         ].every(Boolean);
