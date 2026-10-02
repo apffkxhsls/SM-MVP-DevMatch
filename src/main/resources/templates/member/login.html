@@ -38,6 +38,9 @@
         </div>
         </fieldset>
 
+        <p th:if="${param.error}" class="field-error" role="alert">
+            이메일 또는 비밀번호가 올바르지 않습니다.
+        </p>
         <button type="submit">로그인</button>
 
         <p class="signup-link">
