@@ -29,6 +29,10 @@ public class AuthController {
         return "member/signup";
     }
 
+    @GetMapping("/login")
+    public String loginForm() {
+        return "member/login";
+    }
     /**
      * 입력값을 검증하고 회원가입을 처리한다.
      */

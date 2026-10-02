@@ -1,0 +1,181 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+/* ===== 로그인 페이지 — 브랜드 타이틀 ===== */
+body > h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #4F6EF7;
+    margin-bottom: 6px;
+}
+
+body > h3 {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #888;
+    margin-bottom: 32px;
+}
+
+/* ===== 페이지 카드 공통 ===== */
+.login-page,
+.signup-page {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-page h2,
+.signup-page h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.signup-page > p {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 28px;
+}
+
+/* ===== Fieldset ===== */
+fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+}
+
+/* ===== 입력 필드 ===== */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-field:last-child {
+    margin-bottom: 0;
+}
+
+.form-field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #dde1e7;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    color: #333;
+    background: #fafafa;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+}
+
+.form-field input::placeholder {
+    color: #bbb;
+}
+
+.form-field input:focus {
+    border-color: #4F6EF7;
+    box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.12);
+    background: #fff;
+}
+
+.form-field p {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.field-error {
+    font-size: 0.8rem;
+    color: #e03e3e;
+}
+
+input[aria-invalid="true"] {
+    border-color: #e03e3e;
+    background-color: #fff8f8;
+}
+
+input[aria-invalid="true"]:focus {
+    border-color: #e03e3e;
+    box-shadow: 0 0 0 3px rgba(224, 62, 62, 0.12);
+}
+
+/* ===== 버튼 ===== */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 24px;
+    background-color: #4F6EF7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+button[type="submit"]:hover {
+    background-color: #3a58e0;
+}
+
+/* ===== 하단 링크 ===== */
+.signup-link,
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.signup-link a,
+.login-link a {
+    color: #4F6EF7;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover,
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 480px) {
+    .login-page,
+    .signup-page {
+        padding: 28px 20px;
+    }
+}

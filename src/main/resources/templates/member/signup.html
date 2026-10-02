@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 | DevMate</title>
+    <link rel="stylesheet"
+          href="../../static/css/auth.css"
+          th:href="@{/css/auth.css}">
+</head>
+<body>
+<main class="signup-page">
+    <h1>회원가입</h1>
+    <p>DevMate에 오신 것을 환영합니다.</p>
+
+    <!-- POST /signup → AuthController.signup() → 성공 시 /login으로 리다이렉트 -->
+    <form class="signup-form" method="post" th:action="@{/signup}" th:object="${signupForm}">
+
+        <fieldset>
+            <legend>계정 정보</legend>
+
+            <div class="form-field">
+                <label for="email">이메일</label>
+                <input
+                    type="email"
+                    id="email"
+                    th:field="*{email}"
+                    placeholder="example@email.com"
+                >
+                <!-- 서버 검증 실패 시 오류 메시지 표시 (이메일 형식 오류, 중복 등) -->
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="field-error"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="password">비밀번호</label>
+                <!-- th:field 미사용: 서버 반환 시 비밀번호를 빈칸으로 유지 -->
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="영문, 숫자, 특수문자 포함 8자~20자"
+                >
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="field-error"></p>
+            </div>
+
+            <div class="form-field">
+                <label for="passwordConfirm">비밀번호 확인</label>
+                <input
+                    type="password"
+                    id="passwordConfirm"
+                    name="passwordConfirm"
+                    placeholder="비밀번호를 다시 입력하세요"
+                    aria-describedby="passwordConfirmMessage"
+                >
+                <!-- 비밀번호 일치 여부는 클라이언트(auth.js)에서만 처리 -->
+                <p id="passwordConfirmMessage" aria-live="polite"></p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>기본 정보</legend>
+
+            <div class="form-field">
+                <label for="name">닉네임</label>
+                <input
+                    type="text"
+                    id="name"
+                    th:field="*{name}"
+                    placeholder="50자 이하"
+                    aria-describedby="nameHelp"
+                >
+                <p id="nameHelp">다른 사용자에게 표시되는 이름입니다.</p>
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="field-error"></p>
+            </div>
+        </fieldset>
+
+        <button type="submit">가입하기</button>
+
+        <p class="login-link">
+            이미 계정이 있으신가요?
+            <a href="/login" th:href="@{/login}">로그인</a>
+        </p>
+
+    </form>
+</main>
+<script src="../../static/js/auth.js"
+        th:src="@{/js/auth.js}"></script>
+</body>
+</html>
