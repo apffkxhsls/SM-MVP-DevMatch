@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 | DevMate</title>
+    <link rel="stylesheet"
+          href="../../static/css/auth.css"
+          th:href="@{/css/auth.css}">
+</head>
+<body>
+<!-- 서비스 브랜드 타이틀 (로그인 페이지에만 표시) -->
+<h1>DevMate</h1>
+<h3>기술 스택 및 협업 조건 기반 프로젝트 팀빌딩 플랫폼</h3>
+
+<main class="login-page">
+    <h2>로그인</h2>
+
+    <!-- Spring Security가 POST /login으로 처리 -->
+    <form class="login-form" method="post" th:action="@{/login}">
+
+        <fieldset>
+        <!-- name="email"은 SecurityConfig의 usernameParameter("email")과 일치해야 함 -->
+        <div class="form-field">
+            <label for="email">이메일</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="password">비밀번호</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="비밀번호를 입력하세요"
+            >
+        </div>
+        </fieldset>
+
+        <!-- 로그인 실패 시 /login?error로 리다이렉트되면 표시 -->
+        <p th:if="${param.error}" class="field-error" role="alert">
+            이메일 또는 비밀번호가 올바르지 않습니다.
+        </p>
+        <button type="submit">로그인</button>
+
+        <p class="signup-link">
+            아직 계정이 없으신가요?
+            <a href="/signup" th:href="@{/signup}">회원가입</a>
+        </p>
+
+    </form>
+</main>
+<script src="../../static/js/auth.js"
+        th:src="@{/js/auth.js}"></script>
+</body>
+</html>
