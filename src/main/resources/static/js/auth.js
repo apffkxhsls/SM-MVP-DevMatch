@@ -73,7 +73,7 @@ if (signupForm) {
     const emailInput    = signupForm.querySelector('#email');
     const passwordInput = signupForm.querySelector('#password');
     const confirmInput  = signupForm.querySelector('#passwordConfirm');
-    const nicknameInput = signupForm.querySelector('#nickname');
+    const nicknameInput = signupForm.querySelector('#name');
 
     emailInput.addEventListener('blur', () => validateEmail(emailInput));
     passwordInput.addEventListener('blur', () => validatePassword(passwordInput));
