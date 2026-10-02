@@ -30,6 +30,10 @@ function validatePassword(input) {
     const value = input.value;
     if (!value) return showError(input, '비밀번호를 입력해주세요.'), false;
     if (value.length < 8 || value.length > 20) return showError(input, '비밀번호는 8~20자여야 합니다.'), false;
+    const hasLetter  = /[a-zA-Z]/.test(value);
+    const hasNumber  = /[0-9]/.test(value);
+    const hasSpecial = /[^a-zA-Z0-9]/.test(value);
+    if (!hasLetter || !hasNumber || !hasSpecial) return showError(input, '영문, 숫자, 특수문자를 포함해서 비밀번호를 설정해주세요.'), false;
     clearError(input);
     return true;
 }

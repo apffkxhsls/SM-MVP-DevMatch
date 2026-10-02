@@ -38,7 +38,6 @@
                     name="password"
                     placeholder="영문, 숫자, 특수문자 포함 8자~20자"
                     required
-                    aria-describedby="passwordHelp"
                 >
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="field-error"></p>
             </div>
