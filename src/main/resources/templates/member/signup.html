@@ -13,7 +13,7 @@
     <h1>회원가입</h1>
     <p>DevMate에 오신 것을 환영합니다.</p>
 
-    <form class="signup-form" method="post" th:action="@{/signup}">
+    <form class="signup-form" method="post" th:action="@{/signup}" th:object="${signupForm}">
 
         <fieldset>
             <legend>계정 정보</legend>
@@ -23,7 +23,7 @@
                 <input
                     type="email"
                     id="email"
-                    name="email"
+                    th:field="*{email}"
                     placeholder="example@email.com"
                     required
                 >
@@ -63,7 +63,7 @@
                 <input
                     type="text"
                     id="name"
-                    name="name"
+                    th:field="*{name}"
                     placeholder="50자 이하"
                     required
                     aria-describedby="nameHelp"
