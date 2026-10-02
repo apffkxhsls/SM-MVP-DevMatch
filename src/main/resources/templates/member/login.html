@@ -9,14 +9,18 @@
           th:href="@{/css/auth.css}">
 </head>
 <body>
+<!-- 서비스 브랜드 타이틀 (로그인 페이지에만 표시) -->
 <h1>DevMate</h1>
 <h3>기술 스택 및 협업 조건 기반 프로젝트 팀빌딩 플랫폼</h3>
-<main class="login-page">   
+
+<main class="login-page">
     <h2>로그인</h2>
 
+    <!-- Spring Security가 POST /login으로 처리 -->
     <form class="login-form" method="post" th:action="@{/login}">
 
         <fieldset>
+        <!-- name="email"은 SecurityConfig의 usernameParameter("email")과 일치해야 함 -->
         <div class="form-field">
             <label for="email">이메일</label>
             <input
@@ -38,6 +42,7 @@
         </div>
         </fieldset>
 
+        <!-- 로그인 실패 시 /login?error로 리다이렉트되면 표시 -->
         <p th:if="${param.error}" class="field-error" role="alert">
             이메일 또는 비밀번호가 올바르지 않습니다.
         </p>
