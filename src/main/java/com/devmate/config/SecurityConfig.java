@@ -41,6 +41,8 @@ public class SecurityConfig {
                 )
                 // 폼 기반 로그인 처리 및 기본 로그인 화면 사용
                 .formLogin(form -> form
+                        .loginPage("/login")
+                        .usernameParameter("email")
                         .defaultSuccessUrl("/projects", true)
                         .failureUrl("/login?error")
                         .permitAll()
