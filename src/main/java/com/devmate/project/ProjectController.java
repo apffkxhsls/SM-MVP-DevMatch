@@ -31,24 +31,6 @@ public class ProjectController {
     }
 
     /**
-     * 모집글 목록을 최신순으로 조회한다.
-     */
-    @GetMapping("/projects")
-    public String list(
-            @RequestParam(defaultValue = "0") int page,
-            Model model
-    ) {
-        validatePage(page);
-
-        model.addAttribute(
-                "projectPage",
-                projectService.getProjects(page)
-        );
-
-        return "project/list";
-    }
-
-    /**
      * 빈 모집글 입력 폼을 전달한다.
      */
     @GetMapping("/projects/new")
