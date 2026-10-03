@@ -47,6 +47,10 @@
 
         <fieldset>
             <legend>모집 역할 및 기술</legend>
+            <p class="field-hint">
+                필수 기술은 지원 조건이며, 우대 기술은 적합도 점수에 반영됩니다.
+                동일 기술은 필수·우대 중 한쪽에만 선택할 수 있습니다.
+            </p>
 
             <div class="form-field">
                 <label for="role">모집 역할</label>
@@ -122,17 +126,18 @@
                 </label>
             </fieldset>
 
-            <p class="field-hint">
-                필수 기술은 지원 조건이며, 우대 기술은 적합도 점수에 반영됩니다.
-                동일 기술은 필수·우대 중 한쪽에만 선택할 수 있습니다.
-            </p>
         </fieldset>
 
         <fieldset>
             <legend>활동 시간</legend>
-
+            <p class="field-hint">
+                최소 공통 시간 ≤ 희망 공통 시간 ≤ 요구 주당 시간으로 입력해주세요.
+            </p>
             <div class="form-field">
                 <label for="requiredWeeklyHours">요구 주당 시간</label>
+                <p id="weeklyHoursHelp" class="field-hint">
+                    개인 작업과 공동 활동을 포함하여 필요한 주당 참여 시간입니다.
+                </p>
                 <input
                         type="number"
                         id="requiredWeeklyHours"
@@ -143,14 +148,15 @@
                         placeholder="예: 8"
                         aria-describedby="weeklyHoursHelp"
                 >
-                <p id="weeklyHoursHelp" class="field-hint">
-                    개인 작업과 공동 활동을 포함하여 필요한 주당 참여 시간입니다.
-                </p>
+                
                 <p th:if="${#fields.hasErrors('requiredWeeklyHours')}" th:errors="*{requiredWeeklyHours}" class="field-error"></p>
             </div>
 
             <div class="form-field">
                 <label for="minimumCommonHours">최소 공통 활동 시간</label>
+                <p id="minimumHoursHelp" class="field-hint">
+                    지원자가 팀과 함께 활동할 수 있어야 하는 최소 시간입니다.
+                </p>
                 <input
                         type="number"
                         id="minimumCommonHours"
@@ -161,14 +167,15 @@
                         placeholder="예: 2"
                         aria-describedby="minimumHoursHelp"
                 >
-                <p id="minimumHoursHelp" class="field-hint">
-                    지원자가 팀과 함께 활동할 수 있어야 하는 최소 시간입니다.
-                </p>
+                
                 <p th:if="${#fields.hasErrors('minimumCommonHours')}" th:errors="*{minimumCommonHours}" class="field-error"></p>
             </div>
 
             <div class="form-field">
                 <label for="desiredCommonHours">희망 공통 활동 시간</label>
+                <p id="desiredHoursHelp" class="field-hint">
+                    공통 시간 적합도 점수가 만점이 되는 기준입니다.
+                </p>
                 <input
                         type="number"
                         id="desiredCommonHours"
@@ -179,15 +186,11 @@
                         placeholder="예: 4"
                         aria-describedby="desiredHoursHelp"
                 >
-                <p id="desiredHoursHelp" class="field-hint">
-                    공통 시간 적합도 점수가 만점이 되는 기준입니다.
-                </p>
+                
                 <p th:if="${#fields.hasErrors('desiredCommonHours')}" th:errors="*{desiredCommonHours}" class="field-error"></p>
             </div>
 
-            <p class="field-hint">
-                최소 공통 시간 ≤ 희망 공통 시간 ≤ 요구 주당 시간으로 입력해주세요.
-            </p>
+            
             <!-- hoursOrdered 오류: 시간 조건 위반 시 (@AssertTrue) -->
             <p th:if="${#fields.hasErrors('hoursOrdered')}" th:errors="*{hoursOrdered}" class="field-error"></p>
             <!-- 클라이언트 시간 조건 오류: project-form.js에서 동적으로 표시 -->
@@ -277,16 +280,17 @@
 
             <div class="form-field">
                 <label for="deadline">모집 마감 일시</label>
+                <p id="deadlineHelp" class="field-hint">
+                    한국 시간 기준입니다. 마감 전이라도 팀원 1명을 수락하면
+                    모집이 자동 종료됩니다.
+                </p>
                 <input
                         type="datetime-local"
                         id="deadline"
                         th:field="*{deadline}"
                         aria-describedby="deadlineHelp"
                 >
-                <p id="deadlineHelp" class="field-hint">
-                    한국 시간 기준입니다. 마감 전이라도 팀원 1명을 수락하면
-                    모집이 자동 종료됩니다.
-                </p>
+                
                 <!-- deadlineFuture 오류: 과거 일시 입력 시 (@AssertTrue) -->
                 <p th:if="${#fields.hasErrors('deadlineFuture')}" th:errors="*{deadlineFuture}" class="field-error"></p>
             </div>
