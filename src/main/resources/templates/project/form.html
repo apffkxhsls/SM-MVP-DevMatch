@@ -190,6 +190,8 @@
             </p>
             <!-- hoursOrdered 오류: 시간 조건 위반 시 (@AssertTrue) -->
             <p th:if="${#fields.hasErrors('hoursOrdered')}" th:errors="*{hoursOrdered}" class="field-error"></p>
+            <!-- 클라이언트 시간 조건 오류: project-form.js에서 동적으로 표시 -->
+            <p id="hoursOrderError" class="field-error" aria-live="polite"></p>
 
             <div class="form-field">
                 <p id="availabilityTitle">팀 활동 가능 시간대</p>
