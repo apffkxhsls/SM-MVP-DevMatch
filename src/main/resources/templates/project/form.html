@@ -229,6 +229,8 @@
                 <p id="selectedTimeCount" aria-live="polite">
                     선택한 시간: 주 0시간
                 </p>
+                <!-- 클라이언트 시간대 미선택 오류: project-form.js에서 동적으로 표시 -->
+                <p id="availableSlotsError" class="field-error" aria-live="polite"></p>
                 <!-- availabilitySufficient 오류: 희망 공통 시간보다 적게 선택 시 (@AssertTrue) -->
                 <p th:if="${#fields.hasErrors('availabilitySufficient')}" th:errors="*{availabilitySufficient}" class="field-error"></p>
             </div>
