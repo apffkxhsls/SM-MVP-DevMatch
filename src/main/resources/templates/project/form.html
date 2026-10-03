@@ -22,7 +22,7 @@
             <legend>프로젝트 소개</legend>
 
             <div class="form-field">
-                <label for="title">프로젝트 제목</label>
+                <label for="title" class="required">프로젝트 제목</label>
                 <input
                         type="text"
                         id="title"
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-field">
-                <label for="description">상세 설명</label>
+                <label for="description" class="required">상세 설명</label>
                 <textarea
                         id="description"
                         th:field="*{description}"
@@ -53,7 +53,7 @@
             </p>
 
             <div class="form-field">
-                <label for="role">모집 역할</label>
+                <label for="role" class="required">모집 역할</label>
                 <select id="role" th:field="*{role}">
                     <option value="">역할을 선택하세요</option>
                     <option value="FRONTEND">프론트엔드</option>
@@ -134,7 +134,7 @@
                 최소 공통 시간 ≤ 희망 공통 시간 ≤ 요구 주당 시간으로 입력해주세요.
             </p>
             <div class="form-field">
-                <label for="requiredWeeklyHours">요구 주당 시간</label>
+                <label for="requiredWeeklyHours" class="required">요구 주당 시간</label>
                 <p id="weeklyHoursHelp" class="field-hint">
                     개인 작업과 공동 활동을 포함하여 필요한 주당 참여 시간입니다.
                 </p>
@@ -153,7 +153,7 @@
             </div>
 
             <div class="form-field">
-                <label for="minimumCommonHours">최소 공통 활동 시간</label>
+                <label for="minimumCommonHours" class="required">최소 공통 활동 시간</label>
                 <p id="minimumHoursHelp" class="field-hint">
                     지원자가 팀과 함께 활동할 수 있어야 하는 최소 시간입니다.
                 </p>
@@ -172,7 +172,7 @@
             </div>
 
             <div class="form-field">
-                <label for="desiredCommonHours">희망 공통 활동 시간</label>
+                <label for="desiredCommonHours" class="required">희망 공통 활동 시간</label>
                 <p id="desiredHoursHelp" class="field-hint">
                     공통 시간 적합도 점수가 만점이 되는 기준입니다.
                 </p>
@@ -197,7 +197,7 @@
             <p id="hoursOrderError" class="field-error" aria-live="polite"></p>
 
             <div class="form-field">
-                <p id="availabilityTitle">팀 활동 가능 시간대</p>
+                <p id="availabilityTitle" class="required">팀 활동 가능 시간대</p>
                 <p id="availabilityHelp" class="field-hint">
                     한국 시간 기준으로 팀이 함께 활동할 수 있는 시간을 선택하세요.
                     각 칸은 1시간입니다.
@@ -238,7 +238,7 @@
             <legend>목표 및 협업 방식</legend>
 
             <div class="form-field">
-                <label for="goal">프로젝트 목표</label>
+                <label for="goal" class="required">프로젝트 목표</label>
                 <select id="goal" th:field="*{goal}">
                     <option value="">목표를 선택하세요</option>
                     <option value="CONTEST">대회 출전</option>
@@ -249,7 +249,7 @@
             </div>
 
             <div class="form-field">
-                <label for="meetingType">협업 방식</label>
+                <label for="meetingType" class="required">협업 방식</label>
                 <select id="meetingType" th:field="*{meetingType}">
                     <option value="">방식을 선택하세요</option>
                     <option value="ONLINE">비대면</option>
@@ -279,7 +279,7 @@
             <legend>모집 마감</legend>
 
             <div class="form-field">
-                <label for="deadline">모집 마감 일시</label>
+                <label for="deadline" class="required">모집 마감 일시</label>
                 <p id="deadlineHelp" class="field-hint">
                     한국 시간 기준입니다. 마감 전이라도 팀원 1명을 수락하면
                     모집이 자동 종료됩니다.
