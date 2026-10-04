@@ -261,7 +261,7 @@
             </div>
 
             <div class="form-field" id="regionField">
-                <label for="region">진행 지역 — 대면 선택 시 필수</label>
+                <label for="region" class="required">진행 지역 — 대면 선택 시 필수</label>
                 <input
                         type="text"
                         id="region"
@@ -270,7 +270,7 @@
                         aria-describedby="regionHelp"
                 >
                 <p id="regionHelp" class="field-hint">
-                    현재는 임시 텍스트 입력 방식입니다.
+                    시·군·구 기준으로 입력해 주세요.
                 </p>
                 <!-- offlineRegionPresent 오류: 대면 선택 후 지역 미입력 시 (@AssertTrue) -->
                 <p th:if="${#fields.hasErrors('offlineRegionPresent')}" th:errors="*{offlineRegionPresent}" class="field-error"></p>
