@@ -4,6 +4,9 @@
     <link rel="stylesheet"
           href="../../static/css/style.css"
           th:href="@{/css/style.css}">
+    <link rel="stylesheet"
+      href="../../static/css/project-list.css"
+      th:href="@{/css/project-list.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>팀 찾기 | DevMate</title>
@@ -27,6 +30,12 @@
 
 <main class="page-content">
     <h1 class="page-title">나에게 맞는 프로젝트</h1>
+
+    <!-- 프로필 미작성 시 안내 배너 -->
+    <div th:if="${profileRequired}" class="profile-required-banner" role="alert">
+    프로필을 작성해야 정확한 추천을 받을 수 있어요.
+    <a href="/profile" th:href="@{/profile}">프로필 작성하러 가기</a>
+    </div>
 
     <div class="project-list">
         <div class="project-card">
