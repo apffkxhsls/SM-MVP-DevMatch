@@ -25,3 +25,17 @@
 .profile-required-banner a:hover {
     background-color: #926d56;
 }
+
+/* ===== 모바일 ===== */
+@media (max-width: 600px) {
+    .profile-required-banner {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .profile-required-banner a {
+        margin-left: 0;
+        text-align: center;
+    }
+}
