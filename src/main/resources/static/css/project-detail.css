@@ -162,7 +162,7 @@
 }
 
 /* 읽기 전용: 클릭·hover 비활성화 */
-.time-table-wrapper--readonly {
+.time-table-wrapper--readonly .time-slot {
     pointer-events: none;
 }
 
