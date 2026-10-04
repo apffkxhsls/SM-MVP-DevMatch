@@ -37,6 +37,22 @@
     <a href="/profile" th:href="@{/profile}">프로필 작성하러 가기</a>
     </div>
 
+    <!-- 판정 상태 탭 -->
+    <div class="status-tabs">
+    <a class="status-tab"
+       th:classappend="${selectedStatus.name() == 'PASS'} ? 'status-tab--active'"
+       th:href="@{/projects(status='PASS', page=0)}"
+       href="/projects?status=PASS">충족</a>
+    <a class="status-tab"
+       th:classappend="${selectedStatus.name() == 'FAIL'} ? 'status-tab--active'"
+       th:href="@{/projects(status='FAIL', page=0)}"
+       href="/projects?status=FAIL">미충족</a>
+    <a class="status-tab"
+       th:classappend="${selectedStatus.name() == 'UNKNOWN'} ? 'status-tab--active'"
+       th:href="@{/projects(status='UNKNOWN', page=0)}"
+       href="/projects?status=UNKNOWN">확인 필요</a>
+</div>
+
     <div class="project-list">
         <div class="project-card">
             <h2>공모전 팀원 모집</h2>
